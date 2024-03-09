@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Accordion } from "@/utils/ui/accordion/Accordion";
 
 const houseCleaningCategories = [
   { name: "エアコンクリーニング", slug: "aircon" },
@@ -8,6 +9,15 @@ const houseCleaningCategories = [
   { name: "水回りクリーニング", slug: "water-cleaning" },
   { name: "ハウスクリーニング", slug: "house" },
   { name: "キッチンクリーニング", slug: "kitchen" },
+];
+const renovationCategories = [
+  { name: "壁紙・クロスのリフォーム", slug: "wallpaper" },
+  { name: "網戸張替え", slug: "screen" },
+  { name: "畳張替え（表替え）", slug: "tatami" },
+];
+const largeCategories = [
+  { name: "ハウスクリーニング", children: houseCleaningCategories },
+  { name: "リフォーム", children: renovationCategories },
 ];
 
 export default function Home() {
@@ -21,9 +31,25 @@ export default function Home() {
           <div className="w-1/4" key={el.slug}>
             <Image src="/480x360.png" alt={el.name} width={480} height={360} priority />
             <span className="text-sm font-bold">{el.name}</span>
-      </div>
+          </div>
         ))}
       </div>
+      <h2 className="mb-2 ml-6 mr-auto text-lg font-bold">カテゴリから探す</h2>
+      <ul className="w-full text-left text-lg">
+        {largeCategories.map((category) => (
+          <li key={category.name}>
+            <Accordion title={category.name}>
+              <ul className="bg-gray-200 pl-10 text-sm">
+                {category.children.map((el) => (
+                  <li className="flex h-12 items-center" key={el.slug}>
+                    <Link href={`/${el.slug}`}>{el.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </Accordion>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
