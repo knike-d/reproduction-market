@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
+import { SWRProvider } from "@/app/swrProvider";
 import { Footer } from "@/utils/ui/layout/Footer";
 import { Header } from "@/utils/ui/layout/Header";
 
@@ -12,9 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body className="relative mx-auto flex min-h-screen w-auto max-w-2xl flex-col shadow-lg">
-        <Header />
-        {children}
-        <Footer />
+        <SWRProvider>
+          <Header />
+          {children}
+          <Footer />
+        </SWRProvider>
       </body>
     </html>
   );
