@@ -6,7 +6,7 @@ import { Accordion } from "@/utils/ui/accordion/Accordion";
 import { Spinner } from "@/utils/ui/loading/Spinner";
 
 export const TopPage = () => {
-  const { data } = useFetchCategory();
+  const { data } = useFetchCategory({ suspense: true });
 
   return (
     <main className="flex flex-col items-center justify-between">
@@ -41,5 +41,9 @@ export const TopPage = () => {
   );
 };
 
-const Fallback = () => <Spinner></Spinner>;
+const Fallback = () => (
+  <div className="mt-16 grid w-full place-content-center">
+    <Spinner></Spinner>
+  </div>
+);
 TopPage.Fallback = Fallback;
