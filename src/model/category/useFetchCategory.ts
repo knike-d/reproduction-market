@@ -1,3 +1,4 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import type { CategoryModel } from "@/model/category/category.type";
 
 export const useFetchCategory = () => {

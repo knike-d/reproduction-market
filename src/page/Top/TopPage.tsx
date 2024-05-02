@@ -41,5 +41,9 @@ export const TopPage = () => {
   );
 };
 
-const Fallback = () => <Spinner></Spinner>;
+const Fallback = () => (
+  <div className="mt-16 grid w-full place-content-center">
+    <Spinner></Spinner>
+  </div>
+);
 TopPage.Fallback = Fallback;
