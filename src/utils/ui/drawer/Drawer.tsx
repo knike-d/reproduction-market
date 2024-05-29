@@ -1,6 +1,9 @@
-import type { ReactNode } from "react";
-import { createContext } from "react";
+"use client";
+
+import type { ForwardedRef, ReactNode } from "react";
+import { createContext, forwardRef, useRef } from "react";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
+
 export const DrawerContext = createContext({
   isOpen: false,
 });
@@ -11,7 +14,10 @@ type Props = {
   children: ReactNode;
 };
 
-export const Drawer = ({ isOpen, onClose, children }: Props) => {
+export const Drawer = forwardRef(function Drawer(
+  { isOpen, onClose, children }: Props,
+  firstFocusItemRef: ForwardedRef<HTMLButtonElement | null>,
+) {
   return (
     <>
       <div
@@ -29,6 +35,7 @@ export const Drawer = ({ isOpen, onClose, children }: Props) => {
           type="button"
           className="ml-auto block h-12 px-4"
           aria-label="サイドメニューを閉じる"
+          ref={firstFocusItemRef}
           onClick={onClose}
           tabIndex={isOpen ? 0 : -1}
         >
@@ -38,4 +45,4 @@ export const Drawer = ({ isOpen, onClose, children }: Props) => {
       </div>
     </>
   );
-};
+});
