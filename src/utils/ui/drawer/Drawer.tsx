@@ -2,6 +2,7 @@
 
 import type { ForwardedRef, ReactNode } from "react";
 import { createContext, forwardRef, useRef } from "react";
+import { useFocusTrap } from "@/utils/hooks/useFocusTrap.hook";
 import { useKeyEvent } from "@/utils/hooks/useKeyEvent.hook";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
 
@@ -19,7 +20,11 @@ export const Drawer = forwardRef(function Drawer(
   { isOpen, onClose, children }: Props,
   firstFocusItemRef: ForwardedRef<HTMLButtonElement | null>,
 ) {
+  const drawerContentsRef = useRef<HTMLDivElement | null>(null);
+
   useKeyEvent("keydown", "Escape", onClose);
+  useFocusTrap(drawerContentsRef, isOpen);
+
   return (
     <>
       <div
@@ -30,6 +35,7 @@ export const Drawer = forwardRef(function Drawer(
       <div
         className={`fixed inset-y-0 right-0 z-drawer-menu h-full w-60 overflow-y-auto overscroll-y-contain bg-white font-normal text-black transition-transform duration-300 ${isOpen ? "pointer-events-auto translate-x-0" : "pointer-events-none translate-x-full"}`}
         role="dialog"
+        ref={drawerContentsRef}
         aria-hidden={!isOpen}
         aria-modal="true"
       >
