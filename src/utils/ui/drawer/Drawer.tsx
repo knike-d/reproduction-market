@@ -2,6 +2,7 @@
 
 import type { ForwardedRef, ReactNode } from "react";
 import { createContext, forwardRef, useRef } from "react";
+import { useKeyEvent } from "@/utils/hooks/useKeyEvent.hook";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
 
 export const DrawerContext = createContext({
@@ -18,6 +19,7 @@ export const Drawer = forwardRef(function Drawer(
   { isOpen, onClose, children }: Props,
   firstFocusItemRef: ForwardedRef<HTMLButtonElement | null>,
 ) {
+  useKeyEvent("keydown", "Escape", onClose);
   return (
     <>
       <div
