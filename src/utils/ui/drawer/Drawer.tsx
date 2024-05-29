@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
+import { createContext } from "react";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
+export const DrawerContext = createContext({
+  isOpen: false,
+});
 
 type Props = {
   isOpen: boolean;
@@ -26,10 +30,11 @@ export const Drawer = ({ isOpen, onClose, children }: Props) => {
           className="ml-auto block h-12 px-4"
           aria-label="サイドメニューを閉じる"
           onClick={onClose}
+          tabIndex={isOpen ? 0 : -1}
         >
           <CloseIcon />
         </button>
-        {children}
+        <DrawerContext.Provider value={{ isOpen }}>{children}</DrawerContext.Provider>
       </div>
     </>
   );
