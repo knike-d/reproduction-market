@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { QueryProvider } from "@/app/queryProvider";
