@@ -4,6 +4,7 @@ import type { ForwardedRef, ReactNode } from "react";
 import { createContext, forwardRef, useRef } from "react";
 import { useFocusTrap } from "@/utils/hooks/useFocusTrap.hook";
 import { useKeyEvent } from "@/utils/hooks/useKeyEvent.hook";
+import { useToggleBodyFixed } from "@/utils/hooks/useToggleBodyFixed";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
 
 export const DrawerContext = createContext({
@@ -22,6 +23,7 @@ export const Drawer = forwardRef(function Drawer(
 ) {
   const drawerContentsRef = useRef<HTMLDivElement | null>(null);
 
+  useToggleBodyFixed(isOpen);
   useKeyEvent("keydown", "Escape", onClose);
   useFocusTrap(drawerContentsRef, isOpen);
 
