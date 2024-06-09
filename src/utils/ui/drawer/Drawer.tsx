@@ -12,13 +12,14 @@ export const DrawerContext = createContext({
 });
 
 type Props = {
+  drawerContentsId: string;
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
 };
 
 export const Drawer = forwardRef(function Drawer(
-  { isOpen, onClose, children }: Props,
+  { drawerContentsId, isOpen, onClose, children }: Props,
   contentsRef: ForwardedRef<HTMLElement>,
 ) {
   const drawerContentsRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,7 @@ export const Drawer = forwardRef(function Drawer(
         onClick={onClose}
       />
       <div
+        id={drawerContentsId}
         className={`fixed inset-y-0 right-0 z-drawer-menu h-full w-60 overflow-y-auto overscroll-y-contain bg-white font-normal text-black transition-transform duration-300 ${isOpen ? "pointer-events-auto translate-x-0" : "pointer-events-none translate-x-full"}`}
         role="dialog"
         ref={drawerContentsRef}
