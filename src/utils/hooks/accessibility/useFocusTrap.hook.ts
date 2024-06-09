@@ -1,21 +1,8 @@
 import type { MutableRefObject } from "react";
 import { useCallback } from "react";
+import { FOCUSABLE_ELEMENTS } from "@/utils/constants/accessibility/focusableElements";
 import { useKeyEvent } from "@/utils/hooks/accessibility/useKeyEvent.hook";
 
-const FOCUSABLE_ELEMENTS = [
-  "a[href]",
-  "area[href]",
-  "input:not([disabled]):not([type='hidden']):not([aria-hidden])",
-  "select:not([disabled]):not([aria-hidden])",
-  "textarea:not([disabled]):not([aria-hidden])",
-  "button:not([disabled]):not([aria-hidden])",
-  "iframe",
-  "object",
-  "embed",
-  "summary",
-  "[contenteditable]",
-  "[tabindex]:not([tabindex^='-'])",
-];
 export const useFocusTrap = (contentsRef: MutableRefObject<HTMLElement | null>, isOpen: boolean): void => {
   const handler = useCallback(
     (e: KeyboardEvent) => {

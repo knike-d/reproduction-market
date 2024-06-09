@@ -1,7 +1,7 @@
 "use client";
 
 import type { ForwardedRef, ReactNode } from "react";
-import { createContext, forwardRef, useRef } from "react";
+import { createContext, forwardRef, useImperativeHandle, useRef } from "react";
 import { useFocusTrap } from "@/utils/hooks/accessibility/useFocusTrap.hook";
 import { useKeyEvent } from "@/utils/hooks/accessibility/useKeyEvent.hook";
 import { useToggleBodyFixed } from "@/utils/hooks/uiControl/useToggleBodyFixed";
@@ -19,9 +19,10 @@ type Props = {
 
 export const Drawer = forwardRef(function Drawer(
   { isOpen, onClose, children }: Props,
-  firstFocusItemRef: ForwardedRef<HTMLButtonElement | null>,
+  contentsRef: ForwardedRef<HTMLElement>,
 ) {
-  const drawerContentsRef = useRef<HTMLDivElement | null>(null);
+  const drawerContentsRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(contentsRef, () => drawerContentsRef.current!);
 
   useToggleBodyFixed(isOpen);
   useKeyEvent("keydown", "Escape", onClose);
@@ -45,7 +46,6 @@ export const Drawer = forwardRef(function Drawer(
           type="button"
           className="ml-auto block h-12 px-4"
           aria-label="サイドメニューを閉じる"
-          ref={firstFocusItemRef}
           onClick={onClose}
           tabIndex={isOpen ? 0 : -1}
         >

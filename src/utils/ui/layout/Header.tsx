@@ -7,7 +7,7 @@ import { useDrawer } from "@/utils/ui/drawer/useDrawer.hook";
 import { HamburgerMenuIcon } from "@/utils/ui/icon/HamburgerMenuIcon";
 
 export const Header = () => {
-  const { isOpen, firstFocusItemRef, handleDrawerOpen, handleDrawerClose } = useDrawer();
+  const { isOpen, contentsRef, handleDrawerOpen, handleDrawerClose } = useDrawer();
   return (
     <header className="bg-emerald-500">
       <nav className="flex h-12 max-w-5xl items-center font-bold text-white">
@@ -23,7 +23,7 @@ export const Header = () => {
         >
           <HamburgerMenuIcon />
         </button>
-        <Drawer isOpen={isOpen} onClose={handleDrawerClose} ref={firstFocusItemRef}>
+        <Drawer isOpen={isOpen} onClose={handleDrawerClose} ref={contentsRef}>
           <DrawerLinkItem href="/about">はじめての方へ</DrawerLinkItem>
           <DrawerLinkItem href="/category">カテゴリ一覧</DrawerLinkItem>
           <DrawerLinkItem href="/login">ログイン</DrawerLinkItem>
