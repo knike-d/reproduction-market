@@ -2,9 +2,9 @@
 
 import type { ForwardedRef, ReactNode } from "react";
 import { createContext, forwardRef, useRef } from "react";
-import { useFocusTrap } from "@/utils/hooks/useFocusTrap.hook";
-import { useKeyEvent } from "@/utils/hooks/useKeyEvent.hook";
-import { useToggleBodyFixed } from "@/utils/hooks/useToggleBodyFixed";
+import { useFocusTrap } from "@/utils/hooks/accessibility/useFocusTrap.hook";
+import { useKeyEvent } from "@/utils/hooks/accessibility/useKeyEvent.hook";
+import { useToggleBodyFixed } from "@/utils/hooks/uiControl/useToggleBodyFixed";
 import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
 
 export const DrawerContext = createContext({

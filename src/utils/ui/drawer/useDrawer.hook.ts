@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import { useFocusHolder } from "@/utils/hooks/useFocusHolder.hook";
+import { useFocusHolder } from "@/utils/hooks/accessibility/useFocusHolder.hook";
 
 export const useDrawer = () => {
   const { storeFocusedElement, restoreFocusedElement } = useFocusHolder();

@@ -1,6 +1,6 @@
 import type { MutableRefObject } from "react";
 import { useCallback } from "react";
-import { useKeyEvent } from "@/utils/hooks/useKeyEvent.hook";
+import { useKeyEvent } from "@/utils/hooks/accessibility/useKeyEvent.hook";
 
 const FOCUSABLE_ELEMENTS = [
   "a[href]",
@@ -16,7 +16,6 @@ const FOCUSABLE_ELEMENTS = [
   "[contenteditable]",
   "[tabindex]:not([tabindex^='-'])",
 ];
-
 export const useFocusTrap = (contentsRef: MutableRefObject<HTMLElement | null>, isOpen: boolean): void => {
   const handler = useCallback(
     (e: KeyboardEvent) => {
