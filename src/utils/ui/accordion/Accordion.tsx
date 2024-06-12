@@ -12,15 +12,15 @@ export const Accordion = ({ title, children }: props) => {
   return (
     <div>
       <button
-        type="button"
-        className="h-14 w-full border pl-10 text-left"
         aria-controls="contents"
         aria-expanded={!isOpen}
+        className="h-14 w-full border pl-10 text-left"
+        type="button"
         onClick={handleAccordionClick}
       >
         {title}
       </button>
-      <div id="contents" className="h-0 overflow-hidden" aria-hidden={!isOpen} ref={accordionRef}>
+      <div ref={accordionRef} aria-hidden={!isOpen} className="h-0 overflow-hidden" id="contents">
         <div>{children}</div>
       </div>
     </div>

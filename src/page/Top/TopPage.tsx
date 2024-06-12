@@ -10,13 +10,13 @@ export const TopPage = () => {
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <Image src="/480x360.png" alt="TOP画像" className="mb-6 mt-4" width={480} height={360} priority />
+      <Image alt="TOP画像" className="mb-6 mt-4" height={360} src="/480x360.png" width={480} priority />
 
       <h2 className="mb-2 ml-6 mr-auto text-lg font-bold">人気のカテゴリ</h2>
       <div className="mb-7 flex flex-wrap justify-center gap-5">
         {data?.categories[0]?.children.map((el) => (
-          <div className="w-1/4" key={el.slug}>
-            <Image src="/480x360.png" alt={el.name} width={480} height={360} priority />
+          <div key={el.slug} className="w-1/4">
+            <Image alt={el.name} height={360} src="/480x360.png" width={480} priority />
             <span className="text-sm font-bold">{el.name}</span>
           </div>
         ))}
@@ -28,7 +28,7 @@ export const TopPage = () => {
             <Accordion title={category.name}>
               <ul className="bg-gray-200 pl-10 text-sm">
                 {category.children.map((el) => (
-                  <li className="flex h-12 items-center" key={el.slug}>
+                  <li key={el.slug} className="flex h-12 items-center">
                     <Link href={`/${el.slug}`}>{el.name}</Link>
                   </li>
                 ))}
@@ -43,7 +43,7 @@ export const TopPage = () => {
 
 const Fallback = () => (
   <div className="mt-16 grid w-full place-content-center">
-    <Spinner></Spinner>
+    <Spinner />
   </div>
 );
 TopPage.Fallback = Fallback;
