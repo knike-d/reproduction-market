@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 export const CloseIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    height="1em"
     style={{
       width: 20,
       height: 20,
@@ -9,7 +9,7 @@ export const CloseIcon = (props: SVGProps<SVGSVGElement>) => (
     }}
     viewBox="0 0 512 512"
     width="1em"
-    height="1em"
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <path

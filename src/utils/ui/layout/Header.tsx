@@ -14,20 +14,20 @@ export const Header = () => {
   return (
     <header className="bg-emerald-500">
       <nav className="flex h-12 max-w-5xl items-center font-bold text-white">
-        <Link href="/" className="mr-auto flex h-inherit items-center px-5">
+        <Link className="mr-auto flex h-inherit items-center px-5" href="/">
           Home
         </Link>
         <button
-          type="button"
-          className="h-inherit px-4"
-          onClick={handleDrawerOpen}
-          aria-label="サイドメニューを開く"
-          aria-expanded={isOpen}
           aria-controls={id}
+          aria-expanded={isOpen}
+          aria-label="サイドメニューを開く"
+          className="h-inherit px-4"
+          type="button"
+          onClick={handleDrawerOpen}
         >
           <HamburgerMenuIcon />
         </button>
-        <Drawer drawerContentsId={id} isOpen={isOpen} onClose={handleDrawerClose} ref={contentsRef}>
+        <Drawer ref={contentsRef} drawerContentsId={id} isOpen={isOpen} onClose={handleDrawerClose}>
           <DrawerLinkItem href="/about">はじめての方へ</DrawerLinkItem>
           <DrawerLinkItem href="/category">カテゴリ一覧</DrawerLinkItem>
           <DrawerLinkItem href="/login">ログイン</DrawerLinkItem>

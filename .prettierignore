@@ -1,7 +1,6 @@
 node_modules
 .next
 public
-.eslintrc.json
 tailwind.config.js
 next.config.js
 postcss.config.js
