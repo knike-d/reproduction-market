@@ -2,8 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useFetchCategory } from "@/model/category/useFetchCategory";
-import { Accordion } from "@/utils/ui/accordion/Accordion";
-import { Spinner } from "@/utils/ui/loading/Spinner";
+import { Accordion } from "@/utils/ui/Accordion/Accordion";
+import { Spinner } from "@/utils/ui/Loading/Spinner";
 
 export const TopPage = () => {
   const { data } = useFetchCategory();

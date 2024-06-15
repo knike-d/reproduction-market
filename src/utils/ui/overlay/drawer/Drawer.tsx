@@ -5,7 +5,7 @@ import { createContext, forwardRef, useImperativeHandle, useRef } from "react";
 import { useFocusTrap } from "@/utils/hooks/accessibility/useFocusTrap.hook";
 import { useKeyEvent } from "@/utils/hooks/accessibility/useKeyEvent.hook";
 import { useToggleBodyFixed } from "@/utils/hooks/uiControl/useToggleBodyFixed";
-import { CloseIcon } from "@/utils/ui/icon/CloseIcon";
+import { CloseIcon } from "@/utils/ui/Icon/CloseIcon";
 
 export const DrawerContext = createContext({
   isOpen: false,

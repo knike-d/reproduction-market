@@ -3,8 +3,8 @@ export const dynamic = "force-dynamic";
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { QueryProvider } from "@/app/queryProvider";
-import { Footer } from "@/utils/ui/structure/Footer";
-import { Header } from "@/utils/ui/structure/Header";
+import { Footer } from "@/utils/ui/Structure/Footer";
+import { Header } from "@/utils/ui/Structure/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { useAccordion } from "@/utils/ui/accordion/useAccordion.hook";
+import { useAccordion } from "@/utils/ui/Accordion/useAccordion.hook";
 
 type props = {
   title: string;
