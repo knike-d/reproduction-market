@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useFetchCategory } from "@/model/category/useFetchCategory";
 import { Accordion } from "@/utils/ui/Accordion/Accordion";
-import { Spinner } from "@/utils/ui/Loading/Spinner";
 
 export const TopPage = () => {
   const { data } = useFetchCategory();
@@ -40,10 +39,3 @@ export const TopPage = () => {
     </main>
   );
 };
-
-const Fallback = () => (
-  <div className="mt-16 grid w-full place-content-center">
-    <Spinner />
-  </div>
-);
-TopPage.Fallback = Fallback;
