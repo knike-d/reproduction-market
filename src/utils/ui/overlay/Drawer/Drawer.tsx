@@ -40,7 +40,7 @@ export const Drawer = forwardRef(function Drawer(
         ref={drawerContentsRef}
         aria-hidden={!isOpen}
         aria-modal="true"
-        className={`fixed inset-y-0 right-0 z-drawer-menu h-full w-60 overflow-y-auto overscroll-y-contain bg-white font-normal text-black transition-transform duration-300 ${isOpen ? "pointer-events-auto translate-x-0" : "pointer-events-none translate-x-full"}`}
+        className={`fixed inset-y-0 right-0 z-overlay-content h-full w-60 overflow-y-auto overscroll-y-contain bg-white font-normal text-black transition-transform duration-300 ${isOpen ? "pointer-events-auto translate-x-0" : "pointer-events-none translate-x-full"}`}
         id={drawerContentsId}
         role="dialog"
       >

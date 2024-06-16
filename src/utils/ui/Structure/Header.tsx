@@ -5,10 +5,10 @@ import Link from "next/link";
 import { HamburgerMenuIcon } from "@/utils/ui/Icon/HamburgerMenuIcon";
 import { Drawer } from "@/utils/ui/overlay/Drawer/Drawer";
 import { DrawerLinkItem } from "@/utils/ui/overlay/Drawer/DrawerLinkItem";
-import { useDrawer } from "@/utils/ui/overlay/Drawer/useDrawer.hook";
+import { useOverlayContent } from "@/utils/ui/overlay/useOverlayContent.hook";
 
 export const Header = () => {
-  const { isOpen, contentsRef, handleDrawerOpen, handleDrawerClose } = useDrawer();
+  const { isOpen, overlayContentsRef, handleOverlayOpen, handleOverlayClose } = useOverlayContent();
   const id = useId();
 
   return (
@@ -23,11 +23,11 @@ export const Header = () => {
           aria-label="サイドメニューを開く"
           className="h-inherit px-4"
           type="button"
-          onClick={handleDrawerOpen}
+          onClick={handleOverlayOpen}
         >
           <HamburgerMenuIcon />
         </button>
-        <Drawer ref={contentsRef} drawerContentsId={id} isOpen={isOpen} onClose={handleDrawerClose}>
+        <Drawer ref={overlayContentsRef} drawerContentsId={id} isOpen={isOpen} onClose={handleOverlayClose}>
           <DrawerLinkItem href="/about">はじめての方へ</DrawerLinkItem>
           <DrawerLinkItem href="/category">カテゴリ一覧</DrawerLinkItem>
           <DrawerLinkItem href="/login">ログイン</DrawerLinkItem>

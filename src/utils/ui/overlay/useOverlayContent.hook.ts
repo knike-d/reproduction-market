@@ -2,24 +2,24 @@ import { useCallback, useRef, useState } from "react";
 import { FOCUSABLE_ELEMENTS } from "@/utils/constants/accessibility/focusableElements";
 import { useFocusHolder } from "@/utils/hooks/accessibility/useFocusHolder.hook";
 
-export const useDrawer = <T extends HTMLElement>() => {
+export const useOverlayContent = () => {
   const { storeFocusedElement, restoreFocusedElement } = useFocusHolder();
   const [isOpen, setIsOpen] = useState(false);
-  const contentsRef = useRef<T>(null);
+  const overlayContentsRef = useRef<HTMLDivElement>(null);
 
-  const handleDrawerOpen = useCallback(() => {
+  const handleOverlayOpen = useCallback(() => {
     storeFocusedElement();
     setIsOpen(true);
-    if (contentsRef.current) {
-      const firstItem = contentsRef.current.querySelector<HTMLElement>(FOCUSABLE_ELEMENTS.join());
+    if (overlayContentsRef.current) {
+      const firstItem = overlayContentsRef.current.querySelector<HTMLElement>(FOCUSABLE_ELEMENTS.join());
       firstItem?.focus();
     }
   }, [storeFocusedElement]);
 
-  const handleDrawerClose = useCallback(() => {
+  const handleOverlayClose = useCallback(() => {
     setIsOpen(false);
     restoreFocusedElement();
   }, [restoreFocusedElement]);
 
-  return { isOpen, contentsRef, handleDrawerOpen, handleDrawerClose };
+  return { isOpen, overlayContentsRef, handleOverlayOpen, handleOverlayClose };
 };
