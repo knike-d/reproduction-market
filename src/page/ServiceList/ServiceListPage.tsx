@@ -1,6 +1,7 @@
 "use client";
 import { notFound } from "next/navigation";
 import { useFetchCategory } from "@/model/category/useFetchCategory";
+import { AreaSearchForm } from "@/model/service/SearchForm/AreaSearchForm";
 
 export type ServiceListPageProps = {
   params: { serviceSlug: string };
@@ -17,6 +18,7 @@ export const ServiceListPage = ({ params }: ServiceListPageProps) => {
   return (
     <main className="flex flex-col items-center justify-between">
       <h1 className="mb-4 ml-4 mr-auto mt-6 text-lg font-bold">{category.name}</h1>
+      <AreaSearchForm />
     </main>
   );
 };
